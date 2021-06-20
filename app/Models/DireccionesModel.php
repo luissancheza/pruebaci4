@@ -45,5 +45,11 @@ class DireccionesModel extends Model{
         $query = "SELECT id, id_estado, id_municipio, localidad, latitud, longitud, direccion FROM direccion 
         WHERE  id = ? ";
         return $this->db->query($query, [$iddireccion])->getRow();
-      }
+    }
+    
+    public function delete_direccion($iddireccion){
+      $str_query = "DELETE FROM direccion
+      WHERE id = ?";
+      return $this->db->query($str_query, [$iddireccion]);
+    }
 }

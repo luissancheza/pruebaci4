@@ -99,4 +99,18 @@ class Direccion extends BaseController{
         $data['datos'] = $datos;
         pagina_webapp('direccion/direccion', $data);
     }
+
+    public function delete_direccion() {
+        if ($this->request->isAJAX()) {
+            $iddireccion = $this->request->getVar("iddireccion");
+            
+            $status = $this->direccion->delete_direccion($iddireccion);
+
+            $response = array(
+                'respuesta' => $status,
+            );
+    
+            echo json_encode($response);
+        };
+	}
 }
